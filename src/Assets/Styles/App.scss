@@ -12,6 +12,45 @@
     height: #{$i * 10}px;
   }
 }
-.h-40px{
-  height: 40px;
+
+
+@for $i from 1 through 10 {
+  .w-#{$i}0px {
+    width: #{$i * 10}px;
+  }
+}
+@for $i from 1 through 10 {
+  .w-#{$i}0rem {
+    width: #{$i * 10}rem;
+  }
+}
+@for $i from 1 through 4 {
+  .w-#{$i * 25}vw {
+    width: #{$i * 25}vw;
+  }
+}
+@for $i from 1 through 4 {
+  .h-#{$i * 25}vh {
+    width: #{$i * 25}vh;
+  }
+}
+
+.w-25percent {
+  width: 25%;
+}
+.w-50percent {
+  width: 50%;
+}
+.w-75percent {
+  width: 75%
+}
+.w-100percent {
+  width: 100%;
+}
+.h-100percent {
+  height: 100%;
+}
+#world-image{
+  object-fit: cover;
+  object-position: center;
 }
