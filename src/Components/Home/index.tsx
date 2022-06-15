@@ -1,7 +1,5 @@
 import World from "../../Assets/Images/world.jpg";
 const Banner = ({ data }) => {
-  console.log(data);
-
   return (
     <div className="w-75vw mx-auto box is-flex">
       <figure>
