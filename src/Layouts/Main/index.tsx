@@ -1,4 +1,3 @@
-import { toJS } from "mobx";
 import { inject, observer } from "mobx-react";
 import { useState, useEffect } from "react";
 import Banner from "../../Components/Home";

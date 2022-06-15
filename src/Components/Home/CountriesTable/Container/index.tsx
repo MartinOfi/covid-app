@@ -1,4 +1,4 @@
-import { Button, Table } from "antd";
+import { Button } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { useMemo } from "react";
 import CountriesTableComponent from "../Component";
