@@ -10,6 +10,7 @@ class CountriesStore {
     confirmed: {},
     recovered: {},
     deaths: {},
+    vaccines: {},
   };
   constructor() {
     makeObservable(this, {
@@ -19,12 +20,21 @@ class CountriesStore {
       setCountryDetails: action,
     });
   }
-
+  clearData = () => {
+    this.countryDetails = {
+      countryData: {},
+      confirmed: {},
+      recovered: {},
+      deaths: {},
+      vaccines: {},
+    };
+  };
   getCountryDetails = async (country: string) => {
-     await axiosInstance
+    this.clearData();
+    await axiosInstance
       .get(`/v1/history?country=${country}&status=confirmed`)
       .then((res) => {
-        if (res?.data) {    
+        if (res?.data) {
           this.setCountryDetails(res.data, "confirmed");
         }
       });
@@ -42,11 +52,16 @@ class CountriesStore {
           this.setCountryDetails(res.data, "recovered");
         }
       });
+    await axiosInstance.get(`/v1/vaccines?country=${country}`).then((res) => {
+      if (res?.data) {
+        this.setCountryDetails(res.data, "vaccines");
+      }
+    });
     await axiosInstance.get(`/v1/cases?country=${country}`).then((res) => {
-      if (res?.data) {        
+      if (res?.data) {
         this.setCountryDetails(res.data, "countryData");
       }
-    }); 
+    });
   };
   setCountryDetails = (data: any, propery: string) => {
     this.countryDetails[propery] = data;

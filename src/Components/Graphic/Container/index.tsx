@@ -1,6 +1,6 @@
 import ReactApexChart from "react-apexcharts";
 
-const Graphic = ({ confirmed,deaths,recovered }) => {  
+const Graphic = ({ confirmed, deaths, recovered }) => {
   const graphicData: any = {
     series: [
       {
@@ -42,7 +42,7 @@ const Graphic = ({ confirmed,deaths,recovered }) => {
   return (
     <div id="chart">
       <ReactApexChart
-        width={1000}
+        
         options={graphicData.options}
         series={graphicData.series}
         type="area"

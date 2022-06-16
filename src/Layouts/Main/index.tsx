@@ -4,10 +4,14 @@ import Banner from "../../Components/Banner";
 import CountriesTable from "../../Components/Home/CountriesTable/Container";
 import "antd/dist/antd.min.css";
 import { CountryData } from "./models";
+import Spinner from "../../Components/Spinner";
+
+
 const Home = (props: any) => {
   const [data, setData] = useState<CountryData[]>([]);
   const { CountriesStore } = props;
 
+  
   useEffect(() => {
     CountriesStore.getRelevantData();
   }, []);
@@ -22,7 +26,11 @@ const Home = (props: any) => {
   }, [CountriesStore.relevantData]);
 
   if (data.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="mt-6 has-text-centered">
+        <Spinner/>
+      </div>
+    );
   }
   return (
     <div className="pb-5">

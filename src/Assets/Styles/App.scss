@@ -7,8 +7,14 @@
 @import "~bulma/sass/helpers/_all";
 @import "~bulma/sass/layout/_all";
 
-hr{
+hr {
   height: 3px !important;
+}
+
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
 }
 
 @for $i from 1 through 10 {
@@ -45,7 +51,7 @@ hr{
   width: 50%;
 }
 .w-75percent {
-  width: 75%
+  width: 75%;
 }
 .w-100percent {
   width: 100%;
@@ -53,7 +59,7 @@ hr{
 .h-100percent {
   height: 100%;
 }
-#world-image{
+#world-image {
   object-fit: cover;
   object-position: center;
 }

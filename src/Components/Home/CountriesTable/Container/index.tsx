@@ -6,19 +6,19 @@ import CountriesTableComponent from "../Component";
 const CountriesTable = ({ data }) => {
   const rowData = useMemo(() => {
     const newData = data.map((item) => {
-      return {
-        id: item.All.iso,
-        country: item.All.country,
-        confirmed: item.All.confirmed,
-        deaths: item.All.deaths,
-        population: item.All.population,
-        continent: item.All.continent,
-        lifeExpectancy: item.All.life_expectancy,
-      };
-    });
+        return {
+          id: item.All.iso,
+          country: item.All.country,
+          confirmed: item.All.confirmed || "Desconocidos",
+          deaths: item.All.deaths|| "Desconocidas",
+          population: item.All.population || "Desconocida",
+          continent: item.All.continent || "Desconocido",
+          lifeExpectancy: item.All.life_expectancy || "Desconocida",
+      }
+    }).filter(item=>item.country !== undefined)
     return newData;
   }, [data]);
-
+  
   const columns = useMemo(() => {
     const columns: ColumnsType<any> = [
       {
@@ -70,7 +70,8 @@ const CountriesTable = ({ data }) => {
       },
       {
         key: "7",
-        render: (a) => <Link to={`/detail/${a.country}`}>Ver mas</Link>,
+        render: (a) =>
+          a?.country && <Link to={`/detail/${a.country}`}>Ver mas</Link>,
       },
     ];
     return columns;
