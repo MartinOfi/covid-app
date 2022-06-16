@@ -1,7 +1,7 @@
 import World from "../../Assets/Images/world.jpg";
 const Banner = ({ data }) => {
   return (
-    <div className="w-75vw mx-auto box is-flex">
+    <div className="w-75vw mx-auto box is-flex mt-5">
       <figure>
         <img src={World} alt="" width={400} id="world-image" />
       </figure>

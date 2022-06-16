@@ -1,22 +1,23 @@
-import { Button } from "antd";
 import { ColumnsType } from "antd/lib/table";
 import { useMemo } from "react";
+import { Link } from "react-router-dom";
 import CountriesTableComponent from "../Component";
 
 const CountriesTable = ({ data }) => {
   const rowData = useMemo(() => {
-    const newData = data.map((item)=>{
+    const newData = data.map((item) => {
       return {
-        country:item.All.country,
-        confirmed:item.All.confirmed,
-        deaths:item.All.deaths,
-        population:item.All.population,
-        continent:item.All.continent,
-        lifeExpectancy:item.All.life_expectancy,
-      }
-    })
-    return newData
-  },[])
+        id: item.All.iso,
+        country: item.All.country,
+        confirmed: item.All.confirmed,
+        deaths: item.All.deaths,
+        population: item.All.population,
+        continent: item.All.continent,
+        lifeExpectancy: item.All.life_expectancy,
+      };
+    });
+    return newData;
+  }, [data]);
 
   const columns = useMemo(() => {
     const columns: ColumnsType<any> = [
@@ -51,12 +52,12 @@ const CountriesTable = ({ data }) => {
         key: "5",
         title: "Continente",
         dataIndex: "continent",
-        filters:[
-          {text:'Asia',value:'Asia'},
-          {text:'Europe',value:'Europa'},
-          {text:'North America',value:'Norte America'},
-          {text:'Oceania',value:'Oceania'},
-          {text:'South America',value:'Sur America'},
+        filters: [
+          { text: "Asia", value: "Asia" },
+          { text: "Europe", value: "Europa" },
+          { text: "North America", value: "Norte America" },
+          { text: "Oceania", value: "Oceania" },
+          { text: "South America", value: "Sur America" },
         ],
         onFilter: (value: any, record: any) => record.continent === value,
       },
@@ -69,14 +70,11 @@ const CountriesTable = ({ data }) => {
       },
       {
         key: "7",
-        render:()=><Button>Ver mas</Button>
+        render: (a) => <Link to={`/detail/${a.country}`}>Ver mas</Link>,
       },
     ];
-    return columns
+    return columns;
   }, []);
-
-  return (
-    <CountriesTableComponent columns={columns} rowData={rowData} />
-  );
+  return <CountriesTableComponent columns={columns} rowData={rowData} />;
 };
 export default CountriesTable;
