@@ -5,20 +5,22 @@ import CountriesTableComponent from "../Component";
 
 const CountriesTable = ({ data }) => {
   const rowData = useMemo(() => {
-    const newData = data.map((item) => {
+    const newData = data
+      .map((item) => {
         return {
           id: item.All.iso,
           country: item.All.country,
           confirmed: item.All.confirmed || "Desconocidos",
-          deaths: item.All.deaths|| "Desconocidas",
+          deaths: item.All.deaths || "Desconocidas",
           population: item.All.population || "Desconocida",
           continent: item.All.continent || "Desconocido",
           lifeExpectancy: item.All.life_expectancy || "Desconocida",
-      }
-    }).filter(item=>item.country !== undefined)
+        };
+      })
+      .filter((item) => item.country !== undefined);
     return newData;
   }, [data]);
-  
+
   const columns = useMemo(() => {
     const columns: ColumnsType<any> = [
       {

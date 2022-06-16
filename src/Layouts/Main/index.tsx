@@ -6,12 +6,10 @@ import "antd/dist/antd.min.css";
 import { CountryData } from "./models";
 import Spinner from "../../Components/Spinner";
 
-
 const Home = (props: any) => {
   const [data, setData] = useState<CountryData[]>([]);
   const { CountriesStore } = props;
 
-  
   useEffect(() => {
     CountriesStore.getRelevantData();
   }, []);
@@ -28,7 +26,7 @@ const Home = (props: any) => {
   if (data.length === 0) {
     return (
       <div className="mt-6 has-text-centered">
-        <Spinner/>
+        <Spinner />
       </div>
     );
   }
