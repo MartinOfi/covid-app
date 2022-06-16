@@ -10,8 +10,9 @@ const DetailsComponent = ({
   recovered,
 }) => {
   return (
-    <div className="m-6 box">
-      <div className="is-flex is-justify-content-space-between box">
+    <div className="m-6 box" id="details-page">
+       <title>Detalles de {countryData.All.country}</title>
+      <div className="is-flex is-justify-content-space-between align-items ">
         <h1 className="is-size-1  w-100percent">
           <strong>{countryData.All.country}</strong>
         </h1>
@@ -98,7 +99,7 @@ const DetailsComponent = ({
           </div>
         </div>
       </section>
-      <section className="box">
+      <section className="box mb-6">
         <h2 className="is-size-2">Grafica del dia a dia</h2>
         <Graphic
           confirmed={confirmed.All.dates}

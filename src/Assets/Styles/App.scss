@@ -10,6 +10,9 @@
 hr {
   height: 3px !important;
 }
+.ant-table-wrapper {
+  overflow-x: scroll;
+}
 
 .grid-responsive {
   display: grid;
@@ -62,4 +65,29 @@ hr {
 #world-image {
   object-fit: cover;
   object-position: center;
+}
+@media only screen and (max-width: 1100px) {
+  #home-page {
+    .w-75vw {
+      width: 95vw !important;
+    }
+  }
+}
+@media only screen and (max-width: 800px) {
+  figure {
+    display: none;
+  }
+  #nav-bar {
+    .w-50rem {
+      width: 60% !important;
+    }
+  }
+}
+@media only screen and (max-width: 600px) {
+  #details-page.m-6 {
+    margin: 0 !important;
+    .is-size-1 {
+      font-size: 2.5rem !important;
+    }
+  }
 }

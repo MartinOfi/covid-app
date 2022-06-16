@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { ContryDetails } from "../../Layouts/Main/models";
 import Spinner from "../../Components/Spinner";
 import DetailsComponent from "../../Components/Details";
+
 const DetailsPage = (props) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState<ContryDetails>({
@@ -36,7 +37,7 @@ const DetailsPage = (props) => {
 
   if (loading) {
     return (
-      <div className="mt-6 has-text-centered">
+      <div className="mt-6 has-text-centered" >
         <Spinner />
       </div>
     );

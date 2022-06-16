@@ -31,7 +31,7 @@ const Home = (props: any) => {
     );
   }
   return (
-    <div className="pb-5">
+    <div className="pb-5" id="home-page">
       <Banner data={data[data.length - 1].All} />
       <CountriesTable data={data} />
     </div>
