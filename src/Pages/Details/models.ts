@@ -1,1 +1,0 @@
-export type status = "confirmed" | "deaths" 

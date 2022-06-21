@@ -1,10 +1,14 @@
 import { makeObservable, observable, action, configure } from "mobx";
-import { ContryDetails } from "../Layouts/Main/models";
 import axiosInstance from "../Services/Axios";
+import { ContryDetails, GlobalData } from "../types/models";
 configure({ enforceActions: "always", useProxies: "never" });
 
 class CountriesStore {
-  relevantData: {} = {};
+  relevantData:GlobalData = {
+    countries: [],
+    Global: {}
+      
+  };
   countryDetails: ContryDetails = {
     countryData: {},
     confirmed: {},
@@ -70,12 +74,18 @@ class CountriesStore {
   getRelevantData = async () => {
     await axiosInstance.get("/v1/cases").then((res) => {
       if (res?.data) {
-        this.setRelevantData(res.data);
+        this.setRelevantData(res.data,"countries");
+      }
+    });
+    await axiosInstance.get("/v1/vaccines").then((res) => {
+      if (res?.data) {
+        this.setRelevantData(res.data.Global,"Global");
+      
       }
     });
   };
-  setRelevantData = (data: any) => {
-    this.relevantData = data;
+  setRelevantData = (data: any,propery: string) => {
+    this.relevantData[propery] = data;
   };
 }
 

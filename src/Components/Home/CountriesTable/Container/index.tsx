@@ -1,12 +1,13 @@
 import { ColumnsType } from "antd/lib/table";
 import { useMemo } from "react";
 import { Link } from "react-router-dom";
+import { CountryData } from "../../../../types/models";
 import CountriesTableComponent from "../Component";
 
-const CountriesTable = ({ data }) => {
+const CountriesTable = ({ data }: CountryData[] | any) => {
   const rowData = useMemo(() => {
     const newData = data
-      .map((item) => {
+      .map((item: CountryData) => {
         return {
           id: item.All.iso,
           country: item.All.country,

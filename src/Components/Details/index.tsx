@@ -1,5 +1,6 @@
 import { Button } from "antd";
 import { Link } from "react-router-dom";
+import { ContryDetails } from "../../types/models";
 import Graphic from "../Graphic/Container";
 
 const DetailsComponent = ({
@@ -8,7 +9,7 @@ const DetailsComponent = ({
   confirmed,
   deaths,
   recovered,
-}) => {
+}:ContryDetails) => {
   return (
     <div className="m-6 box" id="details-page">
        <title>Detalles de {countryData.All.country}</title>

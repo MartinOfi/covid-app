@@ -1,4 +1,10 @@
 export interface CountryData {
+  Global?: {
+    confirmed: number;
+    deaths: number;
+    population: number;
+    recovered: number;
+  };
   All?: {
     confirmed: number;
     recovered: number;
@@ -23,7 +29,17 @@ export interface CountryData {
   };
   [otherOptions: string]: unknown;
 }
-
+export interface GlobalData {
+  countries?: CountryData[];
+  Global?: {
+    All?: {
+      population: number;
+      administered: number;
+      people_vaccinated: number;
+      people_partially_vaccinated: number;
+    };
+  };
+}
 export interface ContryDetails {
   countryData: CountryData;
   confirmed: CountryData;

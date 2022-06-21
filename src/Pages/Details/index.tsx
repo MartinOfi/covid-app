@@ -1,9 +1,9 @@
 import { inject, observer } from "mobx-react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { ContryDetails } from "../../Layouts/Main/models";
 import Spinner from "../../Components/Spinner";
 import DetailsComponent from "../../Components/Details";
+import { ContryDetails } from "../../types/models";
 
 const DetailsPage = (props) => {
   const [loading, setLoading] = useState(true);
@@ -20,6 +20,7 @@ const DetailsPage = (props) => {
   useEffect(() => {
     CountriesStore.getCountryDetails(country);
   }, []);
+
   useEffect(() => {
     if (CountriesStore.countryDetails.countryData?.All) {
       const { countryData, confirmed, deaths, recovered, vaccines } =
@@ -37,7 +38,7 @@ const DetailsPage = (props) => {
 
   if (loading) {
     return (
-      <div className="mt-6 has-text-centered" >
+      <div className="mt-6 has-text-centered">
         <Spinner />
       </div>
     );
